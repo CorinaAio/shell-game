@@ -1,0 +1,8 @@
+.shell-game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 500px;
+    background: #D7C0D0;
+    align-items: center;
+}

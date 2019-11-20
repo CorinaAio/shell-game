@@ -1,0 +1,27 @@
+.shell {
+     padding: 30px;
+     position: relative;
+    /*background: #EFF0D1;
+    border: 2px solid #D7C0D0; */
+}
+.shell:hover {
+    cursor: pointer;
+    /* background: #D7C0D0;
+    border-color: #EFF0D1; */
+}
+.shell_image {
+    width: 100px;
+    transform: rotate(135DEG);
+}
+.shell--uncovered .shell_image {
+    transform: translate(-50px, -50px) rotate(135DEG)
+}
+.pea {
+    width: 20px;
+    background: #77BA99;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+}
