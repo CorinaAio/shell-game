@@ -1,13 +1,9 @@
 .shell {
-     padding: 30px;
-     position: relative;
-    /*background: #EFF0D1;
-    border: 2px solid #D7C0D0; */
+    padding: 30px;
+    position: relative;
 }
 .shell:hover {
     cursor: pointer;
-    /* background: #D7C0D0;
-    border-color: #EFF0D1; */
 }
 .shell_image {
     width: 100px;
