@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #D7C0D0
 }
 
 .App-logo {

@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ShellGame from "./components/ShellGame/ShellGame";
 
