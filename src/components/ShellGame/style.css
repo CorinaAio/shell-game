@@ -5,32 +5,24 @@
     padding: 50px;
 }
   
-.card {
+.shell-wrapper {
     position: absolute;
     will-change: transform, width, opacity;
     height: 100%;
   }
   
-  .cell {
-    position: relative;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    text-transform: uppercase;
-    font-size: 10px;
-    line-height: 10px;
+  .game-buttons {
+    margin-top: -100px;
   }
 
-  .details {
-    position: relative;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    height: 300px;
-    display: flex;
-    align-items: center;
+  .game-message {
+      margin: 10px;
   }
-  
+
+  .game-buttons button {
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 0;
+    border: 1px solid black;
+    padding: 10px 20px;
+  }

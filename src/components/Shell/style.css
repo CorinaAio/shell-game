@@ -1,6 +1,7 @@
 .shell {
     padding: 50px;
     position: relative;
+    margin: 50px;
 }
 .shell:hover {
     cursor: pointer;

@@ -9,13 +9,13 @@ import "./style.css";
 
 function ShellGame(props) {
     const initialState = [{
-        ShellComp: () => <Shell />,
+        ShellComp: (props) => <Shell {...props}/>,
         name: "shell0"
     }, {
-        ShellComp: () => <Shell hasPea={true}/>,
+        ShellComp: (props) => <Shell hasPea={true} {...props}/>,
         name: "shell1"
     }, {
-        ShellComp: () => <Shell />,
+        ShellComp: (props) => <Shell {...props}/>,
         name: "shell2"
     }];
 
@@ -23,12 +23,15 @@ function ShellGame(props) {
     const [gameStarted, setGameStarted] = useState(false);
     const [gameEnded, setGameEnded] = useState(false);
     const [isGameWon, setIsGameWon] = useState(false);
+    const [isShuffling, setIsShuffling] = useState(false);
 
     const shuffleShells = () => {
         let turns = 0;
+        setIsShuffling(true);
         let intervalId = setInterval(() => {
             if(turns === 10) {
                 clearInterval(intervalId);
+                setIsShuffling(false);
                 return;
             }
             ++turns;
@@ -47,8 +50,22 @@ function ShellGame(props) {
         shuffleShells();
     }
 
-    const setGameScore = () => {
+    const setGameScore = (gameWon) => {
+        setIsGameWon(gameWon);
+        setGameEnded(true);
+    }
 
+    const getMessageDisplay = () => {
+        switch(true) {
+            case isShuffling: return "Shuffling...";
+            case (gameEnded && isGameWon):  return "You won :)";
+            case (gameEnded && !isGameWon): return "You lost :(";
+            case (gameStarted && !isShuffling):  return "Guess where the pea is";
+        }
+    }
+
+    const blockUserAction = () => {
+        return !gameStarted || isShuffling || gameEnded;
     }
 
     let width = 0;
@@ -65,22 +82,23 @@ function ShellGame(props) {
     
 
     return (
-        <div class="shell-game" >
+        <div className="shell-game" >
             {transitions.map(({ item, props: { x,  ...rest }, key }, index) => {
             const  { ShellComp } = item
             return (
               <animated.div
                 key={key}
-                class="card"
+                class="shell-wrapper"
                 style={{ transform: x.interpolate(x => `translate3d(${x}px,0,0)`) }}>
-                <div class="cell">
-                    <div class="details"><ShellComp /></div>
-                </div>
+                    <ShellComp onClick={score => setGameScore(score)} preventShellUncover={ blockUserAction } />
               </animated.div>
             )})}
-            <div>
+            <div className="game-buttons">
                 { !gameStarted && <Button onClick={startGame}>Start game</Button> }
                 { gameEnded && <Button onClick={resetGame}>Restart</Button> }
+            </div>
+            <div className="game-message">
+                { getMessageDisplay() }
             </div>
         </div>
     );

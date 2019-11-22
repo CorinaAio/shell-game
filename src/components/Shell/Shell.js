@@ -8,7 +8,10 @@ function Shell(props) {
     const [shellUncovered, setShellUncovered] = useState(false)
 
     const uncoverShell = () => {
-        setShellUncovered(true)
+        if(props.preventShellUncover()) return;
+
+        setShellUncovered(true);
+        props.onClick(props.hasPea);
     }
 
     const getClasses = () => {
@@ -17,7 +20,7 @@ function Shell(props) {
 
     return (
     <Box className={getClasses()} onClick={uncoverShell}>
-        <img src={shellPic} className="shell_image"/>
+        <img src={shellPic} className="shell_image" alt="shell"/>
         {props.hasPea && shellUncovered && <div className="pea"></div>}
     </Box>
     );

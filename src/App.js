@@ -4,7 +4,7 @@ import ShellGame from "./components/ShellGame/ShellGame";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <ShellGame />
     </div>
   );
