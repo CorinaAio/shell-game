@@ -26,3 +26,11 @@
     border: 1px solid black;
     padding: 10px 20px;
   }
+
+  .shell-game .shell_image {
+    transform: rotate(0DEG) translate(-25px, -50px);
+  }
+
+  .shell-game.started .shell_image {
+    transform: translate(0, 5px) rotate(135deg);
+  }

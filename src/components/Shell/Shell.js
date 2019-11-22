@@ -21,7 +21,7 @@ function Shell(props) {
     return (
     <Box className={getClasses()} onClick={uncoverShell}>
         <img src={shellPic} className="shell_image" alt="shell"/>
-        {props.hasPea && shellUncovered && <div className="pea"></div>}
+        {props.hasPea && <div className="pea"></div>}
     </Box>
     );
 }

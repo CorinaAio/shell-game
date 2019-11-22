@@ -12,18 +12,21 @@ function ShellGame(props) {
         ShellComp: (props) => <Shell {...props}/>,
         name: "shell0"
     }, {
-        ShellComp: (props) => <Shell hasPea={true} {...props}/>,
+        ShellComp: (props) => <Shell {...props}/>,
         name: "shell1"
     }, {
         ShellComp: (props) => <Shell {...props}/>,
         name: "shell2"
     }];
+    const peaPosition = Math.floor(Math.random() * 3);
+    initialState[peaPosition]["hasPea"]  = true;
 
     const [shells, setShells] = useState(initialState);
     const [gameStarted, setGameStarted] = useState(false);
     const [gameEnded, setGameEnded] = useState(false);
     const [isGameWon, setIsGameWon] = useState(false);
     const [isShuffling, setIsShuffling] = useState(false);
+
 
     const shuffleShells = () => {
         let turns = 0;
@@ -61,6 +64,7 @@ function ShellGame(props) {
             case (gameEnded && isGameWon):  return "You won :)";
             case (gameEnded && !isGameWon): return "You lost :(";
             case (gameStarted && !isShuffling):  return "Guess where the pea is";
+            default: return "";
         }
     }
 
@@ -82,15 +86,15 @@ function ShellGame(props) {
     
 
     return (
-        <div className="shell-game" >
+        <div className={`shell-game ${gameStarted ? 'started' : ''}`} >
             {transitions.map(({ item, props: { x,  ...rest }, key }, index) => {
-            const  { ShellComp } = item
+            const  { ShellComp, hasPea = false } = item
             return (
               <animated.div
                 key={key}
                 class="shell-wrapper"
                 style={{ transform: x.interpolate(x => `translate3d(${x}px,0,0)`) }}>
-                    <ShellComp onClick={score => setGameScore(score)} preventShellUncover={ blockUserAction } />
+                    <ShellComp hasPea={hasPea} onClick={score => setGameScore(score)} preventShellUncover={ blockUserAction } />
               </animated.div>
             )})}
             <div className="game-buttons">
