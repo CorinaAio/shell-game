@@ -50,7 +50,7 @@ function ShellGame(props) {
 
     const startGame = () => {
         setGameStarted(true);
-        shuffleShells();
+        setTimeout(shuffleShells, 1000);
     }
 
     const setGameScore = (gameWon) => {
@@ -61,8 +61,8 @@ function ShellGame(props) {
     const getMessageDisplay = () => {
         switch(true) {
             case isShuffling: return "Shuffling...";
-            case (gameEnded && isGameWon):  return "You won :)";
-            case (gameEnded && !isGameWon): return "You lost :(";
+            case (gameEnded && isGameWon):  return "You won! :)";
+            case (gameEnded && !isGameWon): return "You lost! :(";
             case (gameStarted && !isShuffling):  return "Guess where the pea is";
             default: return "";
         }
@@ -94,7 +94,7 @@ function ShellGame(props) {
                 key={key}
                 class="shell-wrapper"
                 style={{ transform: x.interpolate(x => `translate3d(${x}px,0,0)`) }}>
-                    <ShellComp hasPea={hasPea} onClick={score => setGameScore(score)} preventShellUncover={ blockUserAction } />
+                    <ShellComp hasPea={hasPea} onClick={score => setTimeout(() => setGameScore(score), 1000)} preventShellUncover={ blockUserAction } />
               </animated.div>
             )})}
             <div className="game-buttons">

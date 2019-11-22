@@ -6,13 +6,12 @@
 .shell:hover {
     cursor: pointer;
 }
-.shell_image {
+.shell-image {
     width: 100px;
-    /* transform: rotate(135DEG); */
     z-index: 2;
 }
-.shell--uncovered .shell_image {
-    transform: translate(-50px, -50px) rotate(135DEG)
+.shell-game.started .shell--uncovered .shell-image {
+    transform: translate(-50px, -50px) rotate(180DEG);
 }
 .pea {
     width: 20px;
@@ -23,5 +22,4 @@
     top: calc(50% - 10px);
     left: calc(50% - 10px);
     z-index: -1;
-    /* transform: translateY(100px); */
 }

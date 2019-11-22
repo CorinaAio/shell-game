@@ -16,21 +16,28 @@
   }
 
   .game-message {
-      margin: 10px;
+    margin: 25px;
+    font-size: 25px;
+    font-weight: bold;
   }
 
   .game-buttons button {
     font-size: 16px;
     font-weight: bold;
-    border-radius: 0;
-    border: 1px solid black;
     padding: 10px 20px;
+    background: #EF599F;
+    color: white;
   }
 
-  .shell-game .shell_image {
+  .game-buttons button:hover {
+      background: #890039;
+  }
+
+  .shell-game .shell-image {
     transform: rotate(0DEG) translate(-25px, -50px);
+    transition: transform 500ms 200ms;
   }
 
-  .shell-game.started .shell_image {
-    transform: translate(0, 5px) rotate(135deg);
+  .shell-game.started .shell-image {
+    transform: translate(0, 5px) rotate(180deg);
   }
